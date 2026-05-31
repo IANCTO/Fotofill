@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Imágenes Fotofil</title>
+    <link rel="stylesheet" href="estilos.css"> 
+</head>
+<body>
+    <main class="editor-container">
+        
+        <section class="image-workspace">
+            <div class="top-bar">
+                <img src="fotofilllogo.png" alt="Fotofil Logo" class="logo-img">
+                
+                <div class="upload-container">
+                    <label for="upload-image" class="upload-btn">Subir Foto</label>
+                    <input type="file" id="upload-image" accept="image/png, image/jpeg" style="display: none;">
+                </div>
+
+                <div class="history-controls">
+                    <button id="btn-undo" class="icon-btn">↩️</button>
+                    <button id="btn-redo" class="icon-btn">↪️</button>
+                </div>
+            </div>
+            
+            <div class="canvas-container">
+                        <div id="loading-screen" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Procesando...</p>
+                     </div>
+                <canvas id="image-canvas"></canvas>
+            </div>
+        </section>
+
+        <aside class="tools-panel">
+            <h2>Filtros</h2>
+            <div class="filter-presets">
+                <button class="preset-btn" data-filter="none">Normal</button>
+                <button class="preset-btn" data-filter="sepia">Sepia</button>
+                <button class="preset-btn" data-filter="bn">B & N</button>
+                <button class="preset-btn" data-filter="negative">Negativo</button>
+            </div>
+
+            <h2>Opciones</h2>
+            <div class="sliders-container">
+                <div class="control-group">
+                    <label for="contrast">Contraste</label>
+                    <input type="range" id="contrast" min="0" max="200" value="100">
+                    <input type="number" id="contrast-num" min="0" max="200" value="100">
+                </div>
+                <div class="control-group">
+                    <label for="brightness">Brillo</label>
+                    <input type="range" id="brightness" min="0" max="200" value="100">
+                    <input type="number" id="brightness-num" min="0" max="200" value="100">
+                </div>
+                <div class="control-group">
+                    <label for="saturation">Saturación</label>
+                    <input type="range" id="saturation" min="0" max="200" value="100">
+                    <input type="number" id="saturation-num" min="0" max="200" value="100">
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="btn-export" class="action-btn">Exportar</button>
+                <button id="btn-done" class="action-btn">Listo</button>
+            </div>
+        </aside>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
