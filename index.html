@@ -7,7 +7,28 @@
     <link rel="stylesheet" href="estilos.css"> 
 </head>
 <body>
-    <main class="editor-container">
+  <div id="login-screen" class="login-container">
+    <div class="login-box">
+            <img src="fotofilllogo.png" alt="Logo" class="logo-login">
+            <h2>Bienvenido a Fotofil</h2>
+            
+            <div id="login-form">
+                <input type="text" id="username" placeholder="Usuario (ej: admin)">
+                <input type="password" id="password" placeholder="Contraseña (ej: 1234)">
+                <button id="btn-login" class="action-btn" style="width: 100%; margin-top: 10px;">Ingresar</button>
+            </div>
+
+            <div id="login-loading" class="hidden" style="display: flex; flex-direction: column; align-items: center; margin-top: 15px;">
+                <div class="spinner"></div>
+                <p style="font-weight: bold; color: #8e24aa;">Iniciando sesión...</p>
+            </div>
+            
+            <p id="login-error" class="hidden error-text" style="margin-top: 10px;">Usuario o contraseña incorrectos</p>
+        </div>
+    </div>
+
+
+    <main id="editor-screen" class="editor-container hidden">
         
         <section class="image-workspace">
             <div class="top-bar">
@@ -62,6 +83,11 @@
             </div>
 
             <div class="action-buttons">
+                <select id="export-format" class="format-select">
+                    <option value="png">PNG</option>
+                    <option value="jpg">JPG</option>
+                </select>
+                
                 <button id="btn-export" class="action-btn">Exportar</button>
                 <button id="btn-done" class="action-btn">Listo</button>
             </div>

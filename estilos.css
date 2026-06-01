@@ -108,6 +108,7 @@ h2 {
     text-align: center;
     margin-top: 0;
     margin-bottom: 15px;
+    font-size: 50px;
 }
 
 /* Presets */
@@ -227,6 +228,114 @@ h2 {
 .hidden {
     display: none !important;
 }
+
+
+
+.login-container {
+    /* Cubre toda la pantalla por encima del fondo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Asegura que esté por encima de todo */
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los inputs y el botón */
+    width: 300px;
+    height: 500px;
+    border: 4px solid #000000;
+}
+
+.logo-login {
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    animation: crece 4s linear infinite ;
+}
+
+.login-box h2 {
+    color: #f37500;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.login-box input {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: #8e24aa;
+}
+
+.error-text {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+
+
+.format-select {
+    background-color: #333;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 15px;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: inherit; /* Usa la misma fuente que el resto */
+}
+
+.format-select:hover {
+    border-color: #4fc3f7;
+}
+
+.format-select:focus {
+    outline: none;
+    border-color: #4fc3f7;
+}
+
+/* Ajustamos el contenedor de botones para que todo quepa bien */
+.action-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Alinea el menú y los botones verticalmente */
+    gap: 10px; /* Un poco de espacio entre ellos */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Animación del Spinner giratorio */
 .spinner {

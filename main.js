@@ -26,6 +26,46 @@ miImagen.onload = () => {
     pantallaCarga.classList.add('hidden');
   };
 
+  // --- SISTEMA DE LOGIN (Simulación) --- //
+const loginScreen = document.getElementById('login-screen');
+const editorScreen = document.getElementById('editor-screen');
+const btnLogin = document.getElementById('btn-login');
+const mensajeError = document.getElementById('login-error');
+const loginForm = document.getElementById('login-form');
+const loginLoading = document.getElementById('login-loading');
+
+btnLogin.addEventListener('click', () => {
+    const usuario = document.getElementById('username').value;
+    const contrasena = document.getElementById('password').value;
+
+    // Validamos las credenciales (¡Cámbialas por las que quieras!)
+    if (usuario === 'admin' && contrasena === '1234') {
+        // Credenciales correctas: Ocultamos login, mostramos editor
+        loginScreen.classList.add('hidden');
+        editorScreen.classList.remove('hidden');
+        
+        // Opcional: limpiar los campos por si el usuario recarga
+        document.getElementById('password').value = '';
+        mensajeError.classList.add('hidden');
+        loginForm.classList.add('hidden');
+        loginLoading.classList.remove('hidden');
+        setTimeout(() => {
+            // Después de 2 segundos, quitamos la pantalla de login y mostramos el editor
+            loginScreen.classList.add('hidden');
+            editorScreen.classList.remove('hidden');
+            
+            // "Reseteamos" el login en secreto por si el usuario recarga la página
+            document.getElementById('password').value = '';
+            loginForm.classList.remove('hidden');
+            loginLoading.classList.add('hidden');
+            
+        }, 4000);
+    } else {
+        // Credenciales incorrectas: Mostramos el mensaje de error
+        mensajeError.classList.remove('hidden');
+    }
+});
+
 // --- 4. Motor de Filtros ---
 function aplicarFiltros() {
     const brillo = sliderBrillo.value;
@@ -162,12 +202,27 @@ document.getElementById('upload-image').addEventListener('change', (evento) => {
 
 // --- 9. Exportar Imagen ---
 document.getElementById('btn-export').addEventListener('click', () => {
+    // Verificamos si hay imagen
     if(!miImagen.src) {
         alert("¡Sube una imagen primero!");
         return;
     }
+
+    // 1. Leemos qué formato eligió el usuario en el HTML
+    const formatoElegido = document.getElementById('export-format').value; 
+    
+    // 2. Definimos el tipo MIME exacto que necesita el Canvas (JPG usa 'jpeg')
+    const tipoMime = formatoElegido === 'jpg' ? 'image/jpeg' : 'image/png';
+    
     const enlace = document.createElement('a');
-    enlace.download = 'foto-editada.png';
-    enlace.href = canvas.toDataURL('image/png');
+    
+    // 3. Le ponemos la extensión correcta al nombre del archivo descargado
+    enlace.download = `foto-editada.${formatoElegido}`;
+    
+    // 4. Convertimos el canvas. 
+    // NOTA: Si es JPG, le pasamos '0.9' como segundo parámetro para mantener un 90% de calidad.
+    enlace.href = canvas.toDataURL(tipoMime, 0.9);
+    
+    // 5. Descargamos
     enlace.click();
 });
