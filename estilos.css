@@ -403,3 +403,39 @@ h2 {
     50%{transform: scale(107%);}
     100% {transform: scale(100%);}
 }
+
+
+
+.gallery-grid {
+    display: grid;
+    /* Esto crea columnas que se ajustan solas (mínimo 150px, máximo lo que sobre) */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    overflow-y: auto; /* Agrega una barra de scroll si hay muchos proyectos */
+    padding-bottom: 20px;
+}
+
+.empty-frame {
+    background-color: #f5f5f5;
+    border: 3px dashed #000000; /* Borde punteado clásico de "vacío" */
+    border-radius: 15px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: #888;
+    font-weight: bold;
+}
+
+/* Efecto al pasar el ratón por encima */
+.empty-frame:hover {
+    border-color: #ffffff; /* Borde morado */
+    color: #8e24aa;
+    background-color: #f3e5f5; /* Fondo morado muy clarito */
+    transform: translateY(-5px); /* Se levanta un poquito */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

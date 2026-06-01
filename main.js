@@ -182,6 +182,36 @@ botonesPresets.forEach(boton => {
     });
 });
 
+
+const btnListo = document.getElementById('btn-done');
+const galleryScreen = document.getElementById('gallery-screen');
+// Obtenemos todos los marcos vacíos (esto devuelve una lista)
+const marcosVacios = document.querySelectorAll('.empty-frame');
+
+// 1. Qué pasa al picarle al botón "Listo" en el editor
+btnListo.addEventListener('click', () => {
+    // Ocultamos el editor
+    editorScreen.classList.add('hidden');
+    // Mostramos la galería
+    galleryScreen.classList.remove('hidden');
+});
+
+// 2. Qué pasa al picarle a CUALQUIERA de los marcos vacíos
+marcosVacios.forEach(marco => {
+    marco.addEventListener('click', () => {
+        // Ocultamos la galería
+        galleryScreen.classList.add('hidden');
+        // Volvemos a mostrar el editor
+        editorScreen.classList.remove('hidden');
+        
+        // (Opcional) Si quisieras que al entrar a un nuevo proyecto el editor se limpie
+        // automáticamente, podrías llamar a una función aquí que reinicie los sliders
+        // y ponga miImagen.src = '' (vacío).
+    });
+});
+
+
+
 // --- 8. Subir Imagen Nueva ---
 document.getElementById('upload-image').addEventListener('change', (evento) => {
     const archivo = evento.target.files[0];
